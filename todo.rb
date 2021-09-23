@@ -38,8 +38,8 @@ class Todo < ActiveRecord::Base
     puts displayable_list
   end
 
-  def self.add_task(new_todo)
-    Todo.create!(todo_text: new_todo[:todo_text], due_date: Date.today + new_todo[:due_in_days], completed: false).id
+  def self.add_task(todo1)
+    Todo.create!(todo_text: todo1[:todo_text], due_date: Date.today + todo1[:due_in_days], completed: false)
   end
 
   def self.mark_as_complete(todo_id)
