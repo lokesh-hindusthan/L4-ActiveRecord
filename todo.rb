@@ -26,16 +26,16 @@ class Todo < ActiveRecord::Base
 
  def self.show_list
     puts "Overdue\n"
-    displayable_list = Todo.where("due_date < ?",Date.today).map { |todo| todo.to_displayable_string }
-    puts displayable_list
+    message_display = Todo.where("due_date < ?",Date.today).map { |todo| todo.to_displayable_string }
+    puts message_display
     
     puts "\nDue Today\n"
-    displayable_list = Todo.where("due_date = ?",Date.today).map { |todo| todo.to_displayable_string }
-    puts displayable_list
+    message_displayt = Todo.where("due_date = ?",Date.today).map { |todo| todo.to_displayable_string }
+    puts message_display
 
     puts "\nDue Later\n"
-    displayable_list = Todo.where("due_date > ?",Date.today).map { |todo| todo.to_displayable_string }
-    puts displayable_list
+    message_display = Todo.where("due_date > ?",Date.today).map { |todo| todo.to_displayable_string }
+    puts message_display
   end
 
   def self.add_task(todo1)
