@@ -43,8 +43,7 @@ class Todo < ActiveRecord::Base
   end
 
   def self.mark_as_complete(todo_id)
-    Todo.find(todo_id).update(completed:true)
-    Todo.find(todo_id)
+  update(todo_id, completed: true)
   end
 end
 
