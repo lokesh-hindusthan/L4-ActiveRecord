@@ -36,15 +36,15 @@ class Todo < ActiveRecord::Base
  def self.show_list
     puts "my todolist \n"
     puts "Overdue\n"
-    message_display = Todo.where("due_date < ?",Date.today).map { |todo| todo.to_displayable_string }
+    message_display = Todo.where("due_date < ?",Date.today).map { |todo| todo.to_displayable_list }
     puts message_display
     
     puts "\nDue Today\n"
-    message_display = Todo.where("due_date = ?",Date.today).map { |todo| todo.to_displayable_string }
+    message_display = Todo.where("due_date = ?",Date.today).map { |todo| todo.to_displayable_list }
     puts message_display
 
     puts "\nDue Later\n"
-    message_display = Todo.where("due_date > ?",Date.today).map { |todo| todo.to_displayable_string }
+    message_display = Todo.where("due_date > ?",Date.today).map { |todo| todo.to_displayable_list }
     puts message_display
   end
 
