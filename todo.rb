@@ -59,8 +59,3 @@ class Todo < ActiveRecord::Base
     update(todo_id, completed: true)
   end
 end
-
-  
-
-  
- 
