@@ -11,7 +11,7 @@ class Todo < ActiveRecord::Base
  def to_displayable_string
     display_status = "[#{@completed ? "X" : " "}]"
     display_date = @due_date unless (@due_date ==Date.today)
-    "#{id} #{display_status} #{@text} #{display_date}"
+    "#{id}.  #{display_status} #{@text} #{display_date}"
  end
     attr_accessor :text
     attr_accessor :due_date
@@ -34,26 +34,29 @@ class Todo < ActiveRecord::Base
  end
 
  def self.show_list
-    puts "my todolist \n"
-    puts "Overdue\n"
+    puts "My todolist \n \n"
+    puts "Overdue\n" 
     message_display = Todo.where("due_date < ?",Date.today).map { |todo| todo.to_displayable_list }
     puts message_display
+    puts "\n\n"
     
-    puts "\nDue Today\n"
+    puts "Due Today\n"
     message_display = Todo.where("due_date = ?",Date.today).map { |todo| todo.to_displayable_list }
     puts message_display
+    puts "\n\n"
 
-    puts "\nDue Later\n"
+    puts "Due Later\n"
     message_display = Todo.where("due_date > ?",Date.today).map { |todo| todo.to_displayable_list }
     puts message_display
+    puts "\n\n"
   end
 
-  def self.add_task(todo1)
-    Todo.create!(text: todo1[:text], due_date: Date.today + todo1[:due_in_days], completed: false)
+  def self.add_task(todo)
+    create!(text: todo[:text], due_date: Date.today + todo[:due_in_days])
   end
 
   def self.mark_as_complete(todo_id)
-  update(todo_id, completed: true)
+    update(todo_id, completed: true)
   end
 end
 
