@@ -7,7 +7,7 @@ class Todo < ActiveRecord::Base
   end
   
   #ideally overdue, due_today, and due_later would be their own methods
-  def self.overdue
+  def self.over_due
     where("due_date < ?", Date.today)
   end
 
